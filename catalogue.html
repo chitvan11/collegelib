@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catalogue Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), 
+                url('libim.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #4b2e05;
+            margin: 0;
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        h2 {
+            text-align: center;
+            color: #cc6600;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 80%;
+            margin: auto;
+            border-collapse: collapse;
+            background-color: rgba(255, 250, 240, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #cc9966;
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #ffd9b3;
+            color: #663300;
+        }
+
+        td img {
+            height: 120px;
+            border-radius: 5px;
+        }
+
+        /* Button Styling */
+        .btn {
+            position: relative;
+            background-color: #ffb366;
+            border: 2px solid transparent;
+            color: #4b2e05;
+            padding: 10px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        /* Hover Effect - Darker Neon Border */
+        .btn:hover {
+            background-color: #ff9933;
+            border: 2px solid #cc5500; /* darker neon border */
+            box-shadow: 0 0 10px #cc5500; /* glowing edge */
+        }
+
+        /* Ripple + Click Neon Sparkle */
+        .btn::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 50%;
+            left: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: width 0.4s ease, height 0.4s ease, opacity 0.6s ease;
+        }
+
+        .btn:active::after {
+            width: 250%;
+            height: 250%;
+            opacity: 0;
+        }
+
+        .btn:active {
+            box-shadow: 0 0 18px 3px rgba(204, 85, 0, 0.8); /* darker click glow */
+        }
+    </style>
+</head>
+<body>
+    <h2>Book Catalogue 📖</h2>
+    <table>
+        <tr>
+            <th>Book Cover</th>
+            <th>Book Details</th>
+            <th>Price</th>
+            <th>Cart</th>
+        </tr>
+        <tr>
+            <td><img src="xmlbible.jpeg" alt="XML Bible"></td>
+            <td>
+                <strong>Book:</strong> XML Bible<br>
+                <strong>Author:</strong> Winston<br>
+                <strong>Publication:</strong> Wiley
+            </td>
+            <td>₹40.5</td>
+            <td><button class="btn">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="ai.jpeg" alt="AI Book"></td>
+            <td>
+                <strong>Book:</strong> AI<br>
+                <strong>Author:</strong> S. Russel<br>
+                <strong>Publication:</strong> Prentice Hall
+            </td>
+            <td>₹63</td>
+            <td><button class="btn">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="java2.jpeg" alt="Java 2"></td>
+            <td>
+                <strong>Book:</strong> Java 2<br>
+                <strong>Author:</strong> Watson<br>
+                <strong>Publication:</strong> BPB Publications
+            </td>
+            <td>₹35.5</td>
+            <td><button class="btn">Add to Cart</button></td>
+        </tr>
+        <tr>
+            <td><img src="html24.jpeg" alt="HTML Book"></td>
+            <td>
+                <strong>Book:</strong> HTML in 24 Hours<br>
+                <strong>Author:</strong> Sam Peter<br>
+                <strong>Publication:</strong> Sam Publications
+            </td>
+            <td>₹50</td>
+            <td><button class="btn">Add to Cart</button></td>
+        </tr>
+    </table>
+</body>
+</html>

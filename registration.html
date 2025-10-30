@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                  url('libim.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #4d2600;
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #cc6600;
+      margin-bottom: 35px;
+    }
+
+    .form-container {
+      max-width: 650px;
+      margin: auto;
+      background-color: rgba(255, 250, 240, 0.95);
+      border-radius: 15px;
+      padding: 35px 45px;
+      box-shadow: 0 0 15px rgba(204, 102, 0, 0.25);
+    }
+
+    label {
+      font-weight: 500;
+      display: block;
+      margin-bottom: 6px;
+      color: #663300;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      border: 1.5px solid #e0b58f;
+      border-radius: 10px;
+      background-color: #fff8f0;
+      font-size: 15px;
+      color: #4d2600;
+      transition: box-shadow 0.3s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      box-shadow: 0 0 8px #ffb366;
+      border-color: #cc6600;
+    }
+
+    .radio-group,
+    .checkbox-group {
+      margin-bottom: 20px;
+    }
+
+    .radio-group label,
+    .checkbox-group label {
+      font-weight: 400;
+      margin-right: 15px;
+      color: #4d2600;
+    }
+
+    .dob-select {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      background-color: #cc6600;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e67300;
+      box-shadow: 0 0 10px #cc6600, 0 0 20px #e6b27f;
+    }
+
+    /* Neon Ripple effect */
+    button:active::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60%;
+      height: 60%;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 10px #ffb366;
+      animation: ripple 0.4s ease-out;
+    }
+
+    @keyframes ripple {
+      from { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+      to { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+    }
+
+    .radio-group {
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .radio-options {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 5px;
+    }
+
+
+    .radio-options label,
+    .checkbox-options label {
+      font-weight: 400;
+      color: #4d2600;
+    }
+
+    .sex-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1.5px solid #e0b58f;
+      border-radius: 10px;
+      padding: 10px 12px;
+      background-color: #fff8f0; /* same as other input boxes */
+      font-size: 15px;
+      color: #4d2600;
+      transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .sex-box:focus-within {
+      border-color: #cc6600;
+      box-shadow: 0 0 8px #ffb366;
+    }
+
+    .sex-box label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .sex-box input[type="radio"] {
+      accent-color: #ff9900;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <h2>Registration Form ✍️</h2>
+
+  <div class="form-container">
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Enter your name" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter your password" required>
+
+      <label for="email">Email ID</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" placeholder="Enter your phone number" required>
+
+      <div class="input-box">
+        <label for="sex">Sex</label>
+        <div class="sex-box">
+          <label><input type="radio" name="sex" value="male"> Male</label>
+          <label><input type="radio" name="sex" value="female"> Female</label>
+          <label><input type="radio" name="sex" value="other"> Other</label>
+        </div>
+      </div>
+
+
+
+      <label>Date of Birth</label>
+      <div class="dob-select">
+        <select id="day">
+          <option>Day</option>
+          <script>
+            for (let i = 1; i <= 31; i++) document.write(`<option>${i}</option>`);
+          </script>
+        </select>
+        <select id="month">
+          <option>Month</option>
+          <option>Jan</option><option>Feb</option><option>Mar</option>
+          <option>Apr</option><option>May</option><option>Jun</option>
+          <option>Jul</option><option>Aug</option><option>Sep</option>
+          <option>Oct</option><option>Nov</option><option>Dec</option>
+        </select>
+        <select id="year">
+          <option>Year</option>
+          <script>
+            for (let y = 1980; y <= 2025; y++) document.write(`<option>${y}</option>`);
+          </script>
+        </select>
+      </div>
+
+      <div class="checkbox-group">
+      <label>Languages Known:</label>
+      <div class="checkbox-options">
+        <label><input type="checkbox" name="lang" value="english"> English</label>
+        <label><input type="checkbox" name="lang" value="telugu"> Telugu</label>
+        <label><input type="checkbox" name="lang" value="hindi"> Hindi</label>
+        <label><input type="checkbox" name="lang" value="tamil"> Tamil</label>
+      </div>
+    </div>
+      <label for="address">Address</label>
+      <textarea id="address" placeholder="Enter your address"></textarea>
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+  document.querySelector("form").addEventListener("submit", function(event) {
+    // Get values
+    const name = document.getElementById("name").value.trim();
+    const password = document.getElementById("password").value;
+
+    // Name validation
+    const namePattern = /^[A-Za-z\s]+$/; // alphabets and spaces only
+    if (!namePattern.test(name) || name.length < 6) {
+      alert("Name should contain only alphabets and be at least 6 characters long.");
+      event.preventDefault(); // Stop form from submitting
+      return;
+    }
+
+    // Password validation
+    if (password.length < 6) {
+      alert("Password should be at least 6 characters long.");
+      event.preventDefault();
+      return;
+    }
+
+    alert("Registration successful!");
+  });
+</script>
+
+</body>
+</html>

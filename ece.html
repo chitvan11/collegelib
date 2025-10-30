@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ECE Department - PSIT Bookstore</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: 
+                linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)),
+                url('libim.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #4d2600;
+            padding: 40px;
+        }
+
+        h2 {
+            color: #cc6600;
+        }
+
+        .dept-box {
+            background-color: rgba(255, 242, 230, 0.85);
+            border-left: 5px solid #cc6600;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        li::before {
+            content: "📗 ";
+        }
+
+        a {
+            color: #cc6600;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>Electronics & Communication Engineering (ECE) 📡</h2>
+    <div class="dept-box">
+        <p>The ECE Department deals with signal processing, communication systems, and VLSI design.</p>
+        <h3>Recommended Books:</h3>
+        <ul>
+            <li>Microelectronic Circuits – Sedra & Smith</li>
+            <li>Signals and Systems – Alan V. Oppenheim</li>
+            <li>Digital Communication – Simon Haykin</li>
+            <li>Electronic Devices – Floyd</li>
+        </ul>
+        <a href="catalogue.html" target="rightFrame">→ View Catalogue</a>
+    </div>
+</body>
+</html>

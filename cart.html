@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart Page</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background:
+        linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)),
+        url('libim.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #4d2600;
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #cc6600;
+      margin-bottom: 40px;
+    }
+
+    .cart-container {
+      max-width: 950px;
+      margin: auto;
+      background-color: rgba(255, 250, 240, 0.95);
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(204, 102, 0, 0.25);
+      padding: 25px 35px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th {
+      text-align: left;
+      padding: 14px;
+      border-bottom: 2px solid #e0b58f;
+      color: #663300;
+      font-size: 16px;
+    }
+
+    th:nth-child(4) {
+      text-align: center;
+    }
+
+    td {
+      padding: 16px 14px;
+      border-bottom: 1px solid #f1d1a1;
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .book-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .book-info img {
+      width: 65px;
+      height: 85px;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+      object-fit: cover;
+    }
+
+    .book-info div {
+      font-weight: 500;
+      color: #4d2600;
+      line-height: 1.4;
+    }
+
+    .highlight {
+      font-weight: bold;
+      color: #cc6600;
+      text-align: right;
+    }
+
+    .total-row td {
+      border-top: 2px solid #e0b58f;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    /* Quantity controls */
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .quantity-btn {
+      background-color: transparent;
+      border: 2px solid #cc6600;
+      color: #cc6600;
+      font-size: 16px;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quantity-btn:hover {
+      background-color: #cc6600;
+      color: #fff;
+      box-shadow: 0 0 8px #cc6600;
+    }
+
+    .quantity-input {
+      width: 45px;
+      text-align: center;
+      font-size: 15px;
+      border: 1.5px solid #e0b58f;
+      border-radius: 8px;
+      padding: 4px;
+      background-color: #fff8f0;
+      color: #4d2600;
+    }
+
+    /* Neon click animation */
+    .quantity-btn:active::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      height: 70%;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 0 10px #ffa733;
+      animation: ripple 0.4s ease-out;
+    }
+
+    @keyframes ripple {
+      from { transform: translate(-50%, -50%) scale(0); opacity: 1; }
+      to { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h2>Your Cart 🛒</h2>
+
+  <div class="cart-container">
+    <table id="cart-table">
+      <tr>
+        <th>Department</th>
+        <th>Book</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Amount</th>
+      </tr>
+
+      <tr>
+        <td>CSE</td>
+        <td>
+          <div class="book-info">
+            <img src="ai.jpeg" alt="AI Book">
+            <div>AI<br><small>Author: S. Russel</small></div>
+          </div>
+        </td>
+        <td class="price">₹63</td>
+        <td>
+          <div class="quantity-control">
+            <button class="quantity-btn" onclick="changeQty(this, -1)">–</button>
+            <input type="text" value="1" class="quantity-input" readonly>
+            <button class="quantity-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+        </td>
+        <td class="amount">₹63</td>
+      </tr>
+
+      <tr>
+        <td>ECE</td>
+        <td>
+          <div class="book-info">
+            <img src="java2.jpeg" alt="Java 2 Book">
+            <div>Java 2<br><small>Author: Watson</small></div>
+          </div>
+        </td>
+        <td class="price">₹35.5</td>
+        <td>
+          <div class="quantity-control">
+            <button class="quantity-btn" onclick="changeQty(this, -1)">–</button>
+            <input type="text" value="1" class="quantity-input" readonly>
+            <button class="quantity-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+        </td>
+        <td class="amount">₹35.5</td>
+      </tr>
+
+      <tr>
+        <td>EEE</td>
+        <td>
+          <div class="book-info">
+            <img src="xmlbible.jpeg" alt="XML Bible Book">
+            <div>XML Bible<br><small>Author: Winston</small></div>
+          </div>
+        </td>
+        <td class="price">₹40.5</td>
+        <td>
+          <div class="quantity-control">
+            <button class="quantity-btn" onclick="changeQty(this, -1)">–</button>
+            <input type="text" value="1" class="quantity-input" readonly>
+            <button class="quantity-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+        </td>
+        <td class="amount">₹40.5</td>
+      </tr>
+
+      <tr>
+        <td>CIVIL</td>
+        <td>
+          <div class="book-info">
+            <img src="html24.jpeg" alt="HTML Book">
+            <div>HTML in 24 Hours<br><small>Author: Sam Peter</small></div>
+          </div>
+        </td>
+        <td class="price">₹50</td>
+        <td>
+          <div class="quantity-control">
+            <button class="quantity-btn" onclick="changeQty(this, -1)">–</button>
+            <input type="text" value="1" class="quantity-input" readonly>
+            <button class="quantity-btn" onclick="changeQty(this, 1)">+</button>
+          </div>
+        </td>
+        <td class="amount">₹50</td>
+      </tr>
+
+      <tr class="total-row">
+        <td colspan="4" class="highlight">Total Amount</td>
+        <td class="highlight total">₹189</td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    function changeQty(button, delta) {
+      const input = button.parentElement.querySelector('.quantity-input');
+      const row = button.closest('tr');
+      const priceCell = row.querySelector('.price');
+      const amountCell = row.querySelector('.amount');
+
+      let value = parseInt(input.value);
+      value = Math.max(1, value + delta);
+      input.value = value;
+
+      const price = parseFloat(priceCell.textContent.replace('₹', ''));
+      const newAmount = (price * value).toFixed(2);
+      amountCell.textContent = `₹${newAmount}`;
+
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const amountCells = document.querySelectorAll('.amount');
+      let total = 0;
+      amountCells.forEach(cell => {
+        total += parseFloat(cell.textContent.replace('₹', ''));
+      });
+      document.querySelector('.total').textContent = `₹${total.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
