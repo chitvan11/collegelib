@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Login</title>
     <style>
         body {
             font-family: 'Segoe UI', sans-serif;
@@ -17,18 +18,26 @@
         }
 
         .login-container {
-            background-color: rgba(255, 242, 230, 0.85);
-            padding: 40px 50px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(102, 51, 0, 0.15);
-            width: 380px;
+            background-color: rgba(255, 242, 230, 0.9);
+            padding: 50px 45px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(102, 51, 0, 0.2);
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        /* Added to ensure form takes full width for alignment */
+        form {
+            width: 100%;
         }
 
         h2 {
             text-align: center;
             color: #cc6600;
-            margin-bottom: 30px;
-            font-size: 24px;
+            margin-bottom: 35px;
+            font-size: 26px;
             letter-spacing: 1px;
         }
 
@@ -40,6 +49,7 @@
             text-align: left;
         }
 
+        /* Input fields are 100% wide + 12px padding/border on each side */
         input[type="text"],
         input[type="password"] {
             width: 100%;
@@ -47,7 +57,7 @@
             border: 2px solid #b38b63;
             border-radius: 6px;
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             outline: none;
             transition: 0.3s;
             background-color: #fffaf3;
@@ -59,29 +69,122 @@
             box-shadow: 0 0 5px rgba(204, 102, 0, 0.3);
         }
 
+        .options {
+            /* REVERTED/FIXED: Removed padding-right. 
+               We will use a negative margin on the inner element instead. */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+
+        .options a {
+            color: #cc6600;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .options a:hover {
+            text-decoration: underline;
+            color: #a34700;
+        }
+
+        
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #5a2d0c;
+            line-height: 1;
+            /* FIX 1: PUSH THE REMEMBER ME GROUP RIGHT */
+            /* Inputs have 10px padding + 2px border on the right. 
+               This negative margin will pull the group out by that exact amount. */
+            margin-right: -12px; 
+        }
+        
+        /* Ensures the label is inline and not block-level */
+        .remember label { 
+            display: inline;
+            margin-bottom: 0;
+            font-weight: normal; 
+        }
+
+        .remember input[type="checkbox"] {
+            accent-color: #cc6600;
+            width: 16px;
+            height: 16px;
+            margin: 0;
+            transform: translateY(1px); 
+        }
+
         .buttons {
             display: flex;
-            justify-content: space-evenly;
-            margin-top: 20px;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 15px;
         }
 
-        input[type="submit"],
-        input[type="reset"] {
-            background-color: white;
-            color: #a33b00;
-            font-weight: 600;
-            border: 2px solid #4b2e05;
-            border-radius: 6px;
-            padding: 8px 20px;
+        .btn {
+            position: relative;
+            background-color: #ffb366;
+            border: 2px solid transparent;
+            color: #4b2e05;
+            padding: 10px;
+            border-radius: 25px;
             cursor: pointer;
-            box-shadow: 2px 2px 0px #4b2e05;
+            overflow: hidden;
             transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
         }
 
-        input[type="submit"]:hover,
-        input[type="reset"]:hover {
-            background-color: #ffe6cc;
-            transform: scale(1.05);
+        .btn:hover {
+            background-color: #ff9933;
+            border: 2px solid #cc5500;
+            box-shadow: 0 0 10px #cc5500;
+        }
+
+        .btn::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 50%;
+            left: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: width 0.4s ease, height 0.4s ease, opacity 0.6s ease;
+        }
+
+        .btn:active::after {
+            width: 250%;
+            height: 250%;
+            opacity: 0;
+        }
+
+        .btn:active {
+            box-shadow: 0 0 18px 3px rgba(204, 85, 0, 0.8);
+        }
+
+        .signup {
+            text-align: center;
+            font-size: 14px;
+            color: #5a2d0c;
+        }
+
+        .signup a {
+            color: #cc6600;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup a:hover {
+            text-decoration: underline;
+            color: #a34700;
         }
     </style>
 </head>
@@ -95,9 +198,22 @@
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
+            <div class="options">
+                <a href="#">Forgot Password?</a>
+                
+                <div class="remember">
+                    <input type="checkbox" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+            </div>
+
             <div class="buttons">
-                <input type="submit" value="Submit">
-                <input type="reset" value="Reset">
+                <button type="submit" class="btn">Submit</button>
+                <button type="reset" class="btn">Reset</button>
+            </div>
+
+            <div class="signup">
+                Don’t have an account? <a href="registration.html">Sign up</a>
             </div>
         </form>
     </div>
